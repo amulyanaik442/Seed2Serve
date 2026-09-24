@@ -1,0 +1,263 @@
+/* ============================================================
+   Seed2Serve — Hero Carousel
+   Full-screen agricultural slideshow with fade transitions,
+   arrows, and pagination dots.
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--header-height) - 2rem);
+  overflow: hidden;
+  margin-inline: clamp(1rem, 4vw, 2.5rem);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  scroll-margin-top: var(--header-height);
+}
+
+.hero__stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+}
+
+/* ------- Slides ------- */
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 0;
+  transition: opacity 0.9s ease, visibility 0.9s ease;
+}
+
+.hero__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+/* Background media */
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Subtle dark gradient overlay so text stays readable */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(6, 30, 22, 0.74) 0%,
+      rgba(8, 38, 27, 0.55) 32%,
+      rgba(10, 46, 33, 0.30) 58%,
+      rgba(10, 40, 30, 0.12) 82%,
+      rgba(9, 32, 25, 0.30) 100%
+    );
+}
+
+/* ------- Content ------- */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-block: clamp(4rem, 10vh, 7rem);
+}
+
+.hero__text {
+  max-width: 34rem;
+}
+
+/* Headline */
+.hero__headline {
+  font-size: var(--font-size-hero);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.4rem;
+  text-shadow: 0 2px 18px rgba(6, 28, 20, 0.35);
+}
+
+.hero__line {
+  display: block;
+}
+
+/* Main marketing line: white for legibility over imagery */
+.hero__line--dark {
+  color: var(--color-white);
+}
+
+/* Accent line: brighter agricultural green */
+.hero__line--accent {
+  color: #63ce61;
+}
+
+/* Paragraph */
+.hero__sub {
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.7;
+  color: #eef6f0;
+  max-width: 32rem;
+  margin-bottom: 2.25rem;
+  text-shadow: 0 1px 12px rgba(6, 28, 20, 0.4);
+}
+
+/* Buttons */
+.hero__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ------- Arrows ------- */
+.hero__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+  backdrop-filter: blur(4px);
+  transition: background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.hero__arrow:hover {
+  background-color: rgba(255, 255, 255, 0.24);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero__arrow:focus-visible {
+  outline: 3px solid rgba(76, 175, 69, 0.7);
+  outline-offset: 2px;
+}
+
+.hero__arrow--prev {
+  left: 1.5rem;
+}
+
+.hero__arrow--next {
+  right: 1.5rem;
+}
+
+/* ------- Pagination dots ------- */
+.hero__dots {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hero__dot {
+  width: 11px;
+  height: 11px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: width var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.hero__dot.is-active {
+  width: 30px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent);
+}
+
+.hero__dot:focus-visible {
+  outline: 3px solid rgba(76, 175, 69, 0.7);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100vh;
+    border-radius: var(--radius-lg);
+  }
+
+  .hero__overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(6, 30, 22, 0.62) 0%,
+      rgba(8, 38, 27, 0.45) 55%,
+      rgba(9, 34, 25, 0.7) 100%
+    );
+  }
+
+  .hero__content {
+    padding-block: clamp(6rem, 14vh, 9rem) clamp(5.5rem, 12vh, 8rem);
+  }
+
+  .hero__text {
+    max-width: 100%;
+  }
+
+  .hero__buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero__buttons .btn {
+    width: 100%;
+  }
+
+  .hero__arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero__arrow--prev {
+    left: 0.9rem;
+  }
+
+  .hero__arrow--next {
+    right: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__arrow {
+    display: none; /* arrows omitted on small phones; use dots */
+  }
+
+  .hero__dots {
+    bottom: 1.25rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero__headline {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,132 @@
+/* ============================================================
+   Seed2Serve — FAQ
+   Clean, minimalist accordion.
+   ============================================================ */
+
+.faq {
+  background-color: var(--color-white);
+}
+
+.faq__container {
+  max-width: 940px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+/* ------- Header ------- */
+.faq__head {
+  text-align: center;
+  max-width: 42rem;
+  margin: 0 auto clamp(3rem, 6vw, 4.5rem);
+}
+
+.faq__head .section__heading {
+  margin-bottom: 1rem;
+}
+
+.faq__head .section__lede {
+  margin: 0;
+}
+
+/* ------- Category ------- */
+.faq__category {
+  margin-bottom: 3rem;
+}
+
+.faq__category:last-child {
+  margin-bottom: 0;
+}
+
+.faq__cat-title {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+/* ------- Accordion item ------- */
+.faq__item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq__item:first-of-type {
+  border-top: 1px solid var(--color-border);
+}
+
+.faq__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.35rem 0.25rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-family: var(--font-sans);
+  color: var(--color-primary-dark);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.faq__question:hover {
+  color: var(--color-primary);
+}
+
+.faq__question:focus-visible {
+  outline: 3px solid rgba(76, 175, 69, 0.5);
+  outline-offset: 2px;
+}
+
+.faq__q-text {
+  font-size: clamp(1.02rem, 1.6vw, 1.12rem);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.faq__chevron {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  color: var(--color-primary-dark);
+  transition: transform var(--transition-base),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.faq__question[aria-expanded="true"] .faq__chevron {
+  transform: rotate(180deg);
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+/* ------- Answer ------- */
+.faq__answer {
+  overflow: hidden;
+  transition: max-height var(--transition-base),
+    padding var(--transition-base);
+  max-height: 0;
+  padding: 0;
+}
+
+.faq__answer.is-open {
+  max-height: 320px;
+  padding: 0 0 1.4rem;
+}
+
+.faq__answer p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-body);
+  max-width: 44rem;
+}

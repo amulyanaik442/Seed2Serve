@@ -1,0 +1,742 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Seed2Serve â€” An AI-powered cultivation advisory platform helping farmers make smarter decisions from crop planning to harvest." />
+  <title>Seed2Serve | From Seed to Serve, Powered by AI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/design-system.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/products.css" />
+  <link rel="stylesheet" href="css/faq.css" />
+  <link rel="stylesheet" href="css/team.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+</head>
+<body>
+  <!-- ======================= NAVBAR ======================= -->
+  <header class="navbar-wrapper" id="home">
+    <nav class="navbar" aria-label="Main navigation">
+      <!-- Brand / Logo -->
+      <a href="#" class="navbar__brand" aria-label="Seed2Serve home">
+        <img
+          class="navbar__logo"
+          src="assets/logo.png"
+          alt="Seed2Serve logo"
+        />
+        <span class="navbar__brand-text">
+          <span class="navbar__brand-name">Seed2Serve</span>
+          <span class="navbar__brand-tagline">From Seed to Serve, Powered by AI</span>
+        </span>
+      </a>
+
+      <!-- Menu: links + actions (collapses into a dropdown on mobile) -->
+      <div class="navbar__menu" id="navMenu">
+        <ul class="navbar__links">
+          <li><a href="#home" class="navbar__link is-active">Home</a></li>
+          <li><a href="#about" class="navbar__link">About</a></li>
+          <li><a href="#products" class="navbar__link">Products</a></li>
+          <li><a href="#faqs" class="navbar__link">FAQs</a></li>
+          <li><a href="#team" class="navbar__link">Team</a></li>
+        </ul>
+
+        <!-- Actions -->
+        <div class="navbar__actions">
+          <a href="login.html" class="btn btn--outline navbar__login">Login</a>
+        </div>
+      </div>
+
+      <!-- Hamburger -->
+      <button
+        class="navbar__toggle"
+        id="navToggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="navMenu"
+      >
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+        <span class="navbar__toggle-bar"></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ======================= HERO CAROUSEL ======================= -->
+  <section class="hero" id="hero" aria-label="Highlights carousel">
+    <div class="hero__stage" id="heroCarousel">
+      <!-- Slide 1 -->
+      <article class="hero__slide is-active" data-slide="0">
+        <div class="hero__media" aria-hidden="true">
+          <img class="hero__bg" src="assets/slides/slide1-orchard.jpg" alt="" />
+          <div class="hero__overlay"></div>
+        </div>
+        <div class="container hero__content">
+          <div class="hero__text">
+            <h1 class="hero__headline">
+              <span class="hero__line hero__line--dark">From Seed to Serve.</span>
+            </h1>
+            <p class="hero__sub">
+              One intelligent platform connecting crop planning, crop health, yield, and harvest.
+            </p>
+            <div class="hero__buttons">
+              <a href="#products" class="btn btn--ghost btn--lg hero__btn">
+                <span class="btn__play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+                Explore Solutions
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 2 -->
+      <article class="hero__slide" data-slide="1">
+        <div class="hero__media" aria-hidden="true">
+          <img class="hero__bg" src="assets/slides/slide2-custom.jpg" alt="" />
+          <div class="hero__overlay"></div>
+        </div>
+        <div class="container hero__content">
+          <div class="hero__text">
+            <h1 class="hero__headline">
+              <span class="hero__line hero__line--dark">Grow Smarter. Grow</span>
+              <span class="hero__line hero__line--accent">Stronger.</span>
+            </h1>
+            <p class="hero__sub">
+              AI-powered guidance that helps you make better decisions at every stage of cultivation.
+            </p>
+            <div class="hero__buttons">
+              <a href="#products" class="btn btn--ghost btn--lg hero__btn">
+                <span class="btn__play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+                Explore Solutions
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 3 -->
+      <article class="hero__slide" data-slide="2">
+        <div class="hero__media" aria-hidden="true">
+          <img class="hero__bg" src="assets/slides/slide3-tractor-farm.jpg" alt="" />
+          <div class="hero__overlay"></div>
+        </div>
+        <div class="container hero__content">
+          <div class="hero__text">
+            <h1 class="hero__headline">
+              <span class="hero__line hero__line--dark">Smarter Farming</span>
+              <span class="hero__line hero__line--accent">Starts Here.</span>
+            </h1>
+            <p class="hero__sub">
+              Turn farm data into simple, actionable insights for better cultivation decisions.
+            </p>
+            <div class="hero__buttons">
+              <a href="#products" class="btn btn--ghost btn--lg hero__btn">
+                <span class="btn__play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+                Explore Solutions
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 4 -->
+      <article class="hero__slide" data-slide="3">
+        <div class="hero__media" aria-hidden="true">
+          <img class="hero__bg" src="assets/slides/slide4-rice-paddy.jpg" alt="" />
+          <div class="hero__overlay"></div>
+        </div>
+        <div class="container hero__content">
+          <div class="hero__text">
+            <h1 class="hero__headline">
+              <span class="hero__line hero__line--dark">Every Stage.</span>
+              <span class="hero__line hero__line--accent">Smarter Decisions.</span>
+            </h1>
+            <p class="hero__sub">
+              Intelligent guidance from choosing the right crop to protecting it and planning the harvest.
+            </p>
+            <div class="hero__buttons">
+              <a href="#products" class="btn btn--ghost btn--lg hero__btn">
+                <span class="btn__play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+                Explore Solutions
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 5 -->
+      <article class="hero__slide" data-slide="4">
+        <div class="hero__media" aria-hidden="true">
+          <img class="hero__bg" src="assets/slides/slide5-sunrise-farm.jpg" alt="" />
+          <div class="hero__overlay"></div>
+        </div>
+        <div class="container hero__content">
+          <div class="hero__text">
+            <h1 class="hero__headline">
+              <span class="hero__line hero__line--dark">Let Your Farm</span>
+              <span class="hero__line hero__line--accent">Think Smarter.</span>
+            </h1>
+            <p class="hero__sub">
+              Harness AI to understand your crops, optimize resources, and plan for better harvests.
+            </p>
+            <div class="hero__buttons">
+              <a href="#products" class="btn btn--ghost btn--lg hero__btn">
+                <span class="btn__play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+                Explore Solutions
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Navigation: arrows -->
+      <button class="hero__arrow hero__arrow--prev" id="heroPrev" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+          stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+      </button>
+      <button class="hero__arrow hero__arrow--next" id="heroNext" aria-label="Next slide">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+          stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+      </button>
+
+      <!-- Pagination dots -->
+      <div class="hero__dots" id="heroDots" role="tablist" aria-label="Slide navigation">
+        <button class="hero__dot is-active" data-slide-to="0" aria-label="Go to slide 1" aria-selected="true"></button>
+        <button class="hero__dot" data-slide-to="1" aria-label="Go to slide 2" aria-selected="false"></button>
+        <button class="hero__dot" data-slide-to="2" aria-label="Go to slide 3" aria-selected="false"></button>
+        <button class="hero__dot" data-slide-to="3" aria-label="Go to slide 4" aria-selected="false"></button>
+        <button class="hero__dot" data-slide-to="4" aria-label="Go to slide 5" aria-selected="false"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ABOUT ======================= -->
+  <section class="about" id="about" data-section>
+    <!-- Abstract AI/data pattern, no imagery -->
+    <div class="about__pattern" aria-hidden="true">
+      <span class="about__glow about__glow--1"></span>
+      <span class="about__glow about__glow--2"></span>
+      <span class="about__grid"></span>
+    </div>
+
+    <div class="container about__container">
+      <div class="about__top">
+        <!-- Left: copy -->
+        <div class="about__content">
+          <span class="about__label">About Us</span>
+          <h2 class="about__headline">
+            Empowering Farmers
+            <span class="about__accent">with AI-Powered Intelligence</span>
+          </h2>
+          <p class="about__lede">
+            Seed2Serve is on a mission to transform agriculture with AI-driven
+            insights that help farmers plan better, grow better, and harvest better.
+          </p>
+        </div>
+
+        <!-- Right: premium quote -->
+        <div class="about__quote">
+          <span class="about__quote-mark" aria-hidden="true">&ldquo;</span>
+          <blockquote class="about__quote-text">
+            We believe that the right information, at the right time, can change
+            every farmer&rsquo;s future.
+          </blockquote>
+          <span class="about__quote-accent" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <!-- Benefits row -->
+      <ul class="about__benefits">
+        <li class="about__benefit">
+          <span class="about__benefit-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18h6" />
+              <path d="M10 21h4" />
+              <path d="M12 3a6 6 0 0 0-4 10.5c.6.5 1 1.2 1 2V16h6v-.5c0-.8.4-1.5 1-2A6 6 0 0 0 12 3Z" />
+            </svg>
+          </span>
+          <h3 class="about__benefit-title">Smart Insights</h3>
+          <p class="about__benefit-desc">AI-driven recommendations for better decisions.</p>
+        </li>
+
+        <li class="about__benefit">
+          <span class="about__benefit-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 17 9 11 13 15 21 7" />
+              <polyline points="14 7 21 7 21 14" />
+            </svg>
+          </span>
+          <h3 class="about__benefit-title">Higher Productivity</h3>
+          <p class="about__benefit-desc">Optimize resources and improve yield.</p>
+        </li>
+
+        <li class="about__benefit">
+          <span class="about__benefit-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3l8 3v5c0 4.5-3.2 8.4-8 10-4.8-1.6-8-5.5-8-10V6l8-3Z" />
+              <path d="M9 12l2 2 4-4" />
+            </svg>
+          </span>
+          <h3 class="about__benefit-title">Risk Reduction</h3>
+          <p class="about__benefit-desc">Detect issues early and minimize crop loss.</p>
+        </li>
+
+        <li class="about__benefit">
+          <span class="about__benefit-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s-7-4.3-9.3-8.2C1.2 10 2.3 6.7 5.3 6c1.9-.4 3.8.5 4.7 2 .9-1.5 2.8-2.4 4.7-2 3 .7 4.1 4 2.6 6.8C20 16.7 12 21 12 21Z" />
+              <path d="M16 4l1.5-1.5M19 7l1-1M13 1.5 12.5 2.8" />
+            </svg>
+          </span>
+          <h3 class="about__benefit-title">Farmer First</h3>
+          <p class="about__benefit-desc">Built to support farmers at every step.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======================= PRODUCTS ======================= -->
+  <section class="section products" id="products" data-section>
+    <div class="container">
+      <div class="products__head">
+        <span class="section__label">Our Products</span>
+        <h2 class="section__heading">
+          AI Solutions for <span class="accent">Smarter Farming</span>
+        </h2>
+        <p class="section__lede">
+          Advanced AI tools to simplify farming and maximize results.
+        </p>
+      </div>
+
+      <div class="products__carousel">
+        <div class="products__track" id="productTrack">
+          <!-- Product cards are rendered from js/data/products.js -->
+        </div>
+
+        <!-- Carousel controls -->
+        <div class="products__controls">
+          <button class="products__arrow products__arrow--prev" id="productPrev" aria-label="Previous product">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+              stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+
+          <div class="products__dots" id="productDots" role="tablist" aria-label="Product navigation"></div>
+
+          <button class="products__arrow products__arrow--next" id="productNext" aria-label="Next product">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+              stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= FAQ ======================= -->
+  <section class="section faq" id="faqs" data-section>
+    <div class="faq__container">
+      <div class="faq__head">
+        <span class="section__label">FAQ</span>
+        <h2 class="section__heading">Frequently Asked <span class="accent">Questions</span></h2>
+        <p class="section__lede">
+          Answers to the most common questions about how Seed2Serve works and
+          how our AI solutions can help your farm.
+        </p>
+      </div>
+
+      <div class="faq__category">
+        <h3 class="faq__cat-title">General Questions</h3>
+
+        <div class="faq__item">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span class="faq__q-text">What is Seed2Serve?</span>
+            <span class="faq__chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq__answer">
+            <p>
+              Seed2Serve is an AI-powered cultivation advisory platform that
+              helps farmers make smarter decisions across the entire growing
+              cycle â€” from crop planning to harvest.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span class="faq__q-text">How does Seed2Serve help farmers?</span>
+            <span class="faq__chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq__answer">
+            <p>
+              By combining weather, soil, and crop data with AI, Seed2Serve
+              delivers clear, actionable insights that help farmers plan better,
+              reduce risk, and improve yield.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span class="faq__q-text">Who can use Seed2Serve?</span>
+            <span class="faq__chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq__answer">
+            <p>
+              Seed2Serve is built for smallholder farmers, large agricultural
+              enterprises, cooperatives, and agriculture advisors who want to
+              apply data-driven insights to every cultivation decision.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__category">
+        <h3 class="faq__cat-title">Our AI Solutions</h3>
+
+        <div class="faq__item">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span class="faq__q-text">What is Smart Crop Planning?</span>
+            <span class="faq__chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq__answer">
+            <p>
+              Smart Crop Planning analyzes soil, weather, and historical data to
+              recommend the most suitable crops for your land, season, and resources.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span class="faq__q-text">How does Water Management work?</span>
+            <span class="faq__chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq__answer">
+            <p>
+              Water Management monitors soil moisture and weather to schedule
+              irrigation at the right time, saving water while keeping crops healthy
+              and maximizing yield.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span class="faq__q-text">How does Disease Detection work?</span>
+            <span class="faq__chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq__answer">
+            <p>
+              Using computer vision, Disease Detection identifies crop diseases from
+              images and alerts you early, so you can protect your crops before an
+              outbreak spreads.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span class="faq__q-text">How does Fertilizer Recommendation work?</span>
+            <span class="faq__chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq__answer">
+            <p>
+              Fertilizer Recommendation builds personalized nutrient plans from soil
+              analysis and crop needs, so every input is used where it matters most for
+              better soil health.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span class="faq__q-text">What is Harvest Optimization?</span>
+            <span class="faq__chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq__answer">
+            <p>
+              Harvest Optimization predicts the best time to harvest and provides
+              yield and market insights, helping you capture the highest value from
+              every crop.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__category">
+        <h3 class="faq__cat-title">Getting Started</h3>
+
+        <div class="faq__item">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span class="faq__q-text">How do I get started with Seed2Serve?</span>
+            <span class="faq__chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq__answer">
+            <p>
+              Getting started is simple â€” create your account, add your farm details,
+              and our AI will begin delivering tailored insights right away.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span class="faq__q-text">Can I request a demo?</span>
+            <span class="faq__chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          <div class="faq__answer">
+            <p>
+              Yes. You can request a personalized demo of Seed2Serve to see how our
+              AI solutions would work for your specific farm and goals.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= TEAM ======================= -->
+  <section class="section team" id="team" data-section>
+    <div class="team__pattern" aria-hidden="true">
+      <span class="team__glow team__glow--1"></span>
+      <span class="team__glow team__glow--2"></span>
+    </div>
+    <div class="container team__container">
+      <div class="team__grid">
+        <div class="team__content">
+          <span class="team__label">Our Team</span>
+          <h2 class="team__heading">
+            Meet the Team Behind the
+            <span class="team__heading-accent">Vision</span>
+          </h2>
+          <p class="team__desc">
+            We are a team of student from the 4th year AIML branch at SDMCET, united by a shared
+            vision of using technology and innovation to create meaningful solutions. We believe
+            that ideas become powerful when they are built with purpose, collaboration, and a
+            desire to make a positive impact on society. Through our work, we aim to turn our
+            knowledge and creativity into practical solutions that can contribute to a better
+            and more sustainable future.
+          </p>
+        </div>
+        <div class="team__photo-wrapper">
+          <div class="team__photo-card">
+            <img class="team__photo" src="assets/team/team.jpeg" alt="Seed2Serve team" />
+          </div>
+          <div class="team__photo-glow" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="footer" id="contact">
+    <span class="footer__glow footer__glow--1" aria-hidden="true"></span>
+    <span class="footer__glow footer__glow--2" aria-hidden="true"></span>
+
+    <div class="container">
+      <div class="footer__grid">
+        <!-- Column 1: Brand -->
+        <div class="footer__col footer__col--brand">
+          <a href="#home" class="footer__brand" aria-label="Seed2Serve home">
+            <span class="footer__logo-chip">
+              <img class="footer__logo" src="assets/logo.png" alt="Seed2Serve logo" />
+            </span>
+            <span class="footer__brand-text">
+              <span class="footer__brand-name">Seed2Serve</span>
+              <span class="footer__brand-tagline">From Seed to Serve.Powered by AI.</span>
+            </span>
+          </a>
+          <p class="footer__desc">
+            Empowering agriculture through intelligent technology, data-driven
+            insights, and sustainable solutions for a better tomorrow.
+          </p>
+        </div>
+
+        <!-- Column 2: Products -->
+        <nav class="footer__col" aria-label="Products">
+          <h4 class="footer__heading">Products</h4>
+          <ul class="footer__links">
+            <li>
+              <a class="footer__link footer__product-link" href="login.html" data-product="crop-recommendation">Crop Recommendation &amp; Planning</a>
+            </li>
+            <li>
+              <a class="footer__link footer__product-link" href="login.html" data-product="fertilizer-recommendation">Fertilizer Recommendation</a>
+            </li>
+            <li>
+              <a class="footer__link footer__product-link" href="login.html" data-product="leaf-disease-detection">Leaf Disease Detection</a>
+            </li>
+            <li>
+              <a class="footer__link footer__product-link" href="login.html" data-product="yield-estimation-prediction">Yield Estimation</a>
+            </li>
+            <li>
+              <a class="footer__link footer__product-link" href="login.html" data-product="fruit-vegetable-grading">Fruit &amp; Vegetable Grading</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Column 3: Solutions -->
+        <nav class="footer__col" aria-label="Solutions">
+          <h4 class="footer__heading">Solutions</h4>
+          <ul class="footer__links">
+            <li><a class="footer__link" href="#about">Smart Agriculture</a></li>
+            <li><a class="footer__link" href="#about">AI-Powered Farming</a></li>
+            <li><a class="footer__link" href="#products">Crop Health Monitoring</a></li>
+            <li><a class="footer__link" href="#products">Yield Prediction</a></li>
+            <li><a class="footer__link" href="#about">Sustainable Farming</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 4: Quick Links -->
+        <nav class="footer__col" aria-label="Quick Links">
+          <h4 class="footer__heading">Quick Links</h4>
+          <ul class="footer__links">
+            <li><a class="footer__link" href="#home">Home</a></li>
+            <li><a class="footer__link" href="#products">Products</a></li>
+            <li><a class="footer__link" href="#about">About Us</a></li>
+            <li><a class="footer__link" href="#team">Our Team</a></li>
+            <li><a class="footer__link" href="#faqs">Contact / Support</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 5: Connect With Us -->
+        <div class="footer__col">
+          <h4 class="footer__heading">Connect With Us</h4>
+          <ul class="footer__contact">
+            <li class="footer__contact-row">
+              <span class="footer__contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <polyline points="3 7 12 13 21 7" />
+                </svg>
+              </span>
+              <a class="footer__link" href="mailto:theprojectanisoramzp420@gmail.com">theprojectanisoramzp420@gmail.com</a>
+            </li>
+            <li class="footer__contact-row">
+              <span class="footer__contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z" />
+                </svg>
+              </span>
+              <a class="footer__link" href="tel:+918073363926">+91 80733 63926</a>
+            </li>
+            <li class="footer__contact-row">
+              <span class="footer__contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 21s-7-4.3-9.3-8.2C1.2 10 2.3 6.7 5.3 6c1.9-.4 3.8.5 4.7 2 .9-1.5 2.8-2.4 4.7-2 3 .7 4.1 4 2.6 6.8C20 16.7 12 21 12 21Z" />
+                  <circle cx="12" cy="10" r="2.4" />
+                </svg>
+              </span>
+              <span class="footer__contact-text">SDM College of Engineering &  Technology, Dharwad, Karnataka</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer__bottom">
+        <p>&copy; 2026 Seed2Serve. All Rights Reserved.</p>
+        <p class="footer__legal">
+          <a class="footer__link" href="#home">Privacy Policy</a>
+          <span class="footer__divider" aria-hidden="true">|</span>
+          <a class="footer__link" href="#home">Terms &amp; Conditions</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data/products.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

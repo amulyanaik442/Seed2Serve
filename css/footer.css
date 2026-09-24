@@ -1,0 +1,251 @@
+/* ============================================================
+   Seed2Serve — Footer
+   Premium multi-column footer with deep-green branding.
+   ============================================================ */
+
+.footer {
+  position: relative;
+  margin-top: clamp(3rem, 6vw, 5rem);
+  background: linear-gradient(155deg, #0A3B2A 0%, #08291F 50%, #051D15 100%);
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 22rem at 10% -15%, rgba(76, 175, 69, 0.16), transparent 60%),
+    radial-gradient(50rem 24rem at 94% 6%, rgba(31, 145, 96, 0.18), transparent 62%);
+}
+
+.footer__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.footer__glow--1 {
+  width: 380px;
+  height: 380px;
+  top: -120px;
+  right: 8%;
+  background: rgba(76, 175, 69, 0.14);
+}
+
+.footer__glow--2 {
+  width: 320px;
+  height: 320px;
+  bottom: -140px;
+  left: 5%;
+  background: rgba(20, 90, 58, 0.35);
+}
+
+.footer .container {
+  position: relative;
+  z-index: 1;
+  padding-block: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+/* ------- Grid ------- */
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1.25fr;
+  gap: clamp(1.75rem, 3vw, 2.5rem);
+  align-items: start;
+}
+
+/* ------- Brand ------- */
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.footer__logo-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  padding: 0.35rem 0.5rem;
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: 0 6px 18px rgba(3, 20, 13, 0.35);
+}
+
+.footer__logo {
+  height: 44px;
+  width: auto;
+  max-width: 110px;
+  object-fit: contain;
+}
+
+.footer__brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.footer__brand-name {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-white);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.footer__brand-tagline {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #82d186;
+  letter-spacing: 0.01em;
+}
+
+.footer__desc {
+  max-width: 34ch;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(226, 240, 232, 0.72);
+}
+
+/* ------- Columns ------- */
+.footer__heading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: 0.02em;
+  margin-bottom: 1.1rem;
+  position: relative;
+  padding-bottom: 0.55rem;
+}
+
+.footer__heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 26px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--color-accent), transparent);
+}
+
+/* ------- Links ------- */
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.62rem;
+}
+
+.footer__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: rgba(226, 240, 232, 0.75);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer__link:hover {
+  color: #8fdc93;
+  transform: translateX(3px);
+}
+
+/* ------- Connect / Contact ------- */
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.footer__contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.footer__contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin-top: 0.15rem;
+  color: #8fdc93;
+}
+
+.footer__contact-text {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: rgba(226, 240, 232, 0.75);
+}
+
+/* ------- Bottom bar ------- */
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  flex-wrap: wrap;
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.82rem;
+  color: rgba(226, 240, 232, 0.6);
+}
+
+.footer__legal {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.footer__legal .footer__link {
+  font-size: 0.82rem;
+  color: rgba(226, 240, 232, 0.7);
+}
+
+.footer__legal .footer__link:hover {
+  color: #8fdc93;
+  transform: none;
+}
+
+.footer__divider {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+/* ------- Responsive ------- */
+@media (max-width: 1080px) {
+  .footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__col--brand {
+    grid-column: 1 / -1;
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__col--brand {
+    grid-column: auto;
+    max-width: none;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+}
