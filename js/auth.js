@@ -464,6 +464,11 @@
       e.preventDefault();
       var alert = signup ? signupAlert : loginAlert;
       hideAlert(alert);
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        showAlert(alert, 'info', 'Connecting with Google (Local Dev)...');
+        handleGoogleCredential('dev-google-token');
+        return;
+      }
       showAlert(
         alert,
         'info',

@@ -11,3 +11,8 @@ npm-debug.log*
 # OS
 .DS_Store
 Thumbs.db
+
+# Local SQLite databases
+*.sqlite
+*.sqlite3
+*.db

@@ -17,9 +17,9 @@ const path = require('path');
 const crypto = require('crypto');
 const express = require('express');
 const session = require('express-session');
-const mysql = require('mysql2/promise');
 const bcrypt = require('bcryptjs');
 const { sendMail } = require('./mailer');
+const { initDatabase, pool } = require('./db');
 
 const app = express();
 
@@ -30,25 +30,6 @@ const PORT = parseInt(process.env.PORT, 10) || 3000;
 const BCRYPT_ROUNDS = 12;
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
 const AGROZONE_URL = process.env.AGROZONE_URL || 'http://127.0.0.1:8000';
-
-const dbConfig = {
-  host: process.env.DB_HOST || 'localhost',
-  port: parseInt(process.env.DB_PORT, 10) || 3306,
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'seed2serve'
-};
-
-/* ------------------------------------------------------------
-   MySQL connection pool
-   ------------------------------------------------------------ */
-const pool = mysql.createPool({
-  ...dbConfig,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-  charset: 'utf8mb4'
-});
 
 /* ------------------------------------------------------------
    Minimal persistent session store (MySQL)
@@ -144,6 +125,14 @@ function isValidPhone(value) {
    ------------------------------------------------------------ */
 async function verifyGoogleToken(idToken) {
   if (!idToken) return null;
+  // Local development mock bypass
+  if (idToken === 'dev-google-token') {
+    return {
+      email: 'amulyanaik968@gmail.com',
+      name: 'Amulya Naik',
+      sub: 'google-dev-12345'
+    };
+  }
   const url =
     'https://oauth2.googleapis.com/tokeninfo?id_token=' +
     encodeURIComponent(idToken);
@@ -696,9 +685,10 @@ async function ensureSchema() {
    ------------------------------------------------------------ */
 const server = app.listen(PORT, async () => {
   try {
+    await initDatabase();
     await ensureSchema();
   } catch (err) {
-    console.error('[schema] could not ensure password_resets table:', err.message);
+    console.error('[schema] could not ensure tables:', err.message);
   }
   console.log(`Seed2Serve server running at http://localhost:${PORT}`);
   console.log('  Frontend : http://localhost:' + PORT + '/');
