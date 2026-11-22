@@ -125,6 +125,9 @@
   function showCropDemo() {
     if (cropDemo) {
       cropDemo.hidden = false;
+      try {
+        window.dispatchEvent(new CustomEvent('seed2serve_open_crop_demo'));
+      } catch (e) {}
     }
   }
 

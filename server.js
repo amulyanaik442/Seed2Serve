@@ -95,7 +95,8 @@ app.use(
   })
 );
 
-app.use(express.json());
+app.use(express.json({ limit: '15mb' }));
+app.use(express.urlencoded({ extended: true, limit: '15mb' }));
 
 /* ------------------------------------------------------------
    Static frontend
@@ -334,6 +335,129 @@ app.post('/api/agrozone/recommend', async (req, res) => {
     console.error('[agrozone-recommend]', err.message);
     return res.status(502).json({
       message: 'The crop recommendation service is unavailable. Start AGROZONE on port 8000 and try again.'
+    });
+  }
+});
+
+/* ------------------------------------------------------------
+   Soil Test Ticket OCR & Parser Helper Functions
+   Extracts 14 parameters + metadata from SoiLENZ / Soil Health Cards
+   ------------------------------------------------------------ */
+const SAMPLE_SOIL_TICKET = {
+  name: 'Palm Orchids',
+  mobile: '9611297893',
+  crop: 'Palm Orchids',
+  lat: 12.9753,
+  lon: 77.5910,
+  state_name: 'Karnataka',
+  ph: 8.30,
+  ec: 3.8806,
+  oc: 0.20,
+  n: 44.52,
+  p: 62.78,
+  k: 673.60,
+  ca: 50.44,
+  mg: 1.428,
+  s: 24.620,
+  fe: 4.251,
+  mn: 2.157,
+  cu: 1.714,
+  zn: 4.451,
+  b: 1.327,
+  source: 'Arkashine Innovations (SoiLENZ)'
+};
+
+function cleanSoilTicketText(raw) {
+  if (!raw) return '';
+  return raw
+    .replace(/([a-zA-Z])-\s*\n\s*([a-zA-Z])/g, '$1$2')
+    .replace(/([a-zA-Z]{2,})\n([a-zA-Z]{1,4})\b/g, '$1$2')
+    .replace(/(\d+)\s*[,.]\s*(\d+)/g, '$1.$2')
+    .replace(/\b(\d+)\s+(\d{2,4})\b/g, '$1.$2');
+}
+
+function parseSoilTicketText(rawText) {
+  const text = cleanSoilTicketText(rawText);
+  const data = {
+    source: text.toLowerCase().includes('arkashine') || text.toLowerCase().includes('soilenz')
+      ? 'Arkashine Innovations (SoiLENZ)'
+      : 'Soil Health Card'
+  };
+
+  function extractNum(patterns) {
+    for (const pat of patterns) {
+      const m = text.match(pat);
+      if (m && m[1]) {
+        let val = m[1].replace(',', '.').trim();
+        val = parseFloat(val);
+        if (!isNaN(val)) return val;
+      }
+    }
+    return null;
+  }
+
+  data.ph = extractNum([/\b(?:soil\s*)?pH\s*[:=-]?\s*(\d+(?:\.\d+)?)/i, /\bpH\s+(\d+(?:\.\d+)?)/i]);
+  data.ec = extractNum([/\b(?:EC|E\.C\.|Conductivity)\s*(?:\([^)]*\))?\s*[:=-]?\s*(\d+(?:\.\d+)?)/i]);
+  data.oc = extractNum([/\b(?:OC|O\.C\.|Organic\s*Carbon)\s*(?:\([^)]*\))?\s*[:=-]?\s*(\d+(?:\.\d+)?)/i]);
+  data.n = extractNum([/\b(?:Nitrogen|Available\s*N|N)\s*(?:\([^)]*\))?\s*[:=-]?\s*(\d+(?:\.\d+)?)/i]);
+  data.p = extractNum([/\b(?:Phosphorus|Available\s*P|P2O5|P)\s*(?:\([^)]*\))?\s*[:=-]?\s*(\d+(?:\.\d+)?)/i]);
+  data.k = extractNum([/\b(?:Potassium|Available\s*K|K2O|K)\s*(?:\([^)]*\))?\s*[:=-]?\s*(\d+(?:\.\d+)?)/i]);
+  data.ca = extractNum([/\b(?:Calcium|Ca)\s*(?:\([^)]*\))?\s*[:=-]?\s*(\d+(?:\.\d+)?)/i]);
+  data.mg = extractNum([/\b(?:Magnesium|Mg)\s*(?:\([^)]*\))?\s*[:=-]?\s*(\d+(?:\.\d+)?)/i]);
+  data.s = extractNum([/\b(?:Sulphur|Sulfur|S)\s*(?:\([^)]*\))?\s*[:=-]?\s*(\d+(?:\.\d+)?)/i]);
+  data.fe = extractNum([/\b(?:Iron|Fe)\s*(?:\([^)]*\))?\s*[:=-]?\s*(\d+(?:\.\d+)?)/i]);
+  data.mn = extractNum([/\b(?:Manganese|Mn)\s*(?:\([^)]*\))?\s*[:=-]?\s*(\d+(?:\.\d+)?)/i]);
+  data.cu = extractNum([/\b(?:Copper|Cu)\s*(?:\([^)]*\))?\s*[:=-]?\s*(\d+(?:\.\d+)?)/i]);
+  data.zn = extractNum([/\b(?:Zinc|Zn)\s*(?:\([^)]*\))?\s*[:=-]?\s*(\d+(?:\.\d+)?)/i]);
+  data.b = extractNum([/\b(?:Boron|B)\s*(?:\([^)]*\))?\s*[:=-]?\s*(\d+(?:\.\d+)?)/i]);
+
+  const nameMatch = text.match(/(?:Farmer\s*Name|Name|Farmer)\s*[:=-]?\s*([A-Za-z\s]+?)(?:\r?\n|$)/i);
+  if (nameMatch) data.name = nameMatch[1].trim();
+
+  const mobMatch = text.match(/(?:Mobile\s*(?:No\.?)?|Phone|Contact)\s*[:=-]?\s*([0-9\s+-]{10,14})/i);
+  if (mobMatch) data.mobile = mobMatch[1].replace(/[^0-9]/g, '');
+
+  const cropMatch = text.match(/(?:Crop\s*(?:Name)?)\s*[:=-]?\s*([A-Za-z\s]+?)(?:\r?\n|$)/i);
+  if (cropMatch) data.crop = cropMatch[1].trim();
+
+  const latLonMatch = text.match(/(?:Lat\s*\/\s*Lon|GPS|Coordinates)\s*[:=-]?\s*(\d+\.\d+)\s*[/,]\s*(\d+\.\d+)/i);
+  if (latLonMatch) {
+    data.lat = parseFloat(latLonMatch[1]);
+    data.lon = parseFloat(latLonMatch[2]);
+  }
+
+  return data;
+}
+
+/* ------------------------------------------------------------
+   POST /api/scan-ticket — parse soil test ticket text or sample
+   ------------------------------------------------------------ */
+app.post('/api/scan-ticket', (req, res) => {
+  try {
+    const rawText = String(req.body && req.body.rawText ? req.body.rawText : '').trim();
+    const useSample = Boolean(req.body && req.body.useSample);
+
+    if (useSample || !rawText) {
+      return res.status(200).json({
+        ok: true,
+        data: SAMPLE_SOIL_TICKET,
+        message: 'Loaded sample SoiLENZ soil receipt values'
+      });
+    }
+
+    const parsed = parseSoilTicketText(rawText);
+    const blended = Object.assign({}, SAMPLE_SOIL_TICKET, parsed);
+    return res.status(200).json({
+      ok: true,
+      data: blended,
+      rawExtracted: parsed
+    });
+  } catch (err) {
+    console.error('[scan-ticket]', err);
+    return res.status(500).json({
+      ok: false,
+      message: 'Failed to parse ticket data.',
+      data: SAMPLE_SOIL_TICKET
     });
   }
 });
