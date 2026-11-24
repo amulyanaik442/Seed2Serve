@@ -278,6 +278,7 @@
   const copySoilDataBtn = document.getElementById('copySoilDataBtn');
   const copyBtnText     = document.getElementById('copyBtnText');
   const openCropEngineBtn = document.getElementById('openCropEngineBtn');
+  const openYieldEstimatorBtn = document.getElementById('openYieldEstimatorBtn');
   const rawOcrTextEl    = document.getElementById('rawOcrText');
 
   // Guide Modal
@@ -416,6 +417,9 @@
     }
     if (openCropEngineBtn) {
       openCropEngineBtn.addEventListener('click', openCropEngineExternal);
+    }
+    if (openYieldEstimatorBtn) {
+      openYieldEstimatorBtn.addEventListener('click', openYieldEstimatorExternal);
     }
     if (copySoilDataBtn) {
       copySoilDataBtn.addEventListener('click', () => copySoilDataToClipboard(true));
@@ -846,6 +850,14 @@
     copySoilDataToClipboard(false);
     const qs = buildSoilQueryParams(currentTicketData);
     window.open(`http://127.0.0.1:8003/soil-test-choice/?has_report=yes&${qs}`, '_blank');
+  }
+
+  function openYieldEstimatorExternal() {
+    if (!currentTicketData) return;
+    saveTicketToStorage(currentTicketData);
+    copySoilDataToClipboard(false);
+    const qs = buildSoilQueryParams(currentTicketData);
+    window.open(`http://127.0.0.1:8002/?${qs}`, '_blank');
   }
 
   // ─── PERSISTENCE ──────────────────────────────────────────────────────────────
