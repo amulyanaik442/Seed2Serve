@@ -44,10 +44,18 @@ package.json            Node dependencies and scripts
 .env.example            Environment variable template
 .gitignore              Excludes secrets, dependencies, and logs
 assets/                 Logos, product images, slides, and team image
-css/                    Page and design-system styles
-js/                     Frontend behavior and product rendering
+css/                    Page and design-system styles (includes ticket-scanner.css)
+js/                     Frontend behavior, product rendering, and ticket-scanner.js
 db/seed2serve.sql       Database schema and seed/reference SQL
 ```
+
+## Soil Test Ticket Scanner & Cross-Port Auto-Fill
+
+Seed2Serve features an automated Soil Test Ticket Scanner directly on the farmer dashboard (`dashboard.html`):
+- **Input Methods:** Image file upload (JPG, PNG, WEBP), mobile camera capture, or live desktop webcam.
+- **OCR Engine & Canvas Pre-Processing:** High-contrast binarization and $2\times$ upscaling via HTML5 Canvas before Tesseract.js processing, eliminating font bleed and noise on thermal receipts (Arkashine Innovations / SoiLENZ and official Soil Health Cards).
+- **Strict Line-by-Line Parsing:** Number extraction bounded by colon separators with zero default/fallback hallucination.
+- **Cross-Port Synchronization:** Copies structured `SEED2SERVE_SOIL_DATA:{...}` payloads to the system clipboard and appends URL query strings for instant one-click auto-filling on Crop Recommendation (port `8000`) and Fertilizer Recommendation (port `8003`).
 
 ## Requirements
 
